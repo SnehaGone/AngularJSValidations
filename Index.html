@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<title>angular</title>
+	<link type="text/css" rel="stylesheet" href="style.css"/>
+  <link type="text/css" rel="stylesheet" href="bootstrap.min.css"/>
+	<script src="angular.min.js"></script>
+    <script src="jquery.js"></script>
+	<script src="bootstrap.min.js"></script>
+
+</head>
+<body ng-app="">
+
+        <div class="modal-dialog">
+        <div class="loginmodal-container">
+          <h1>Login to Your Account</h1><br>
+<form name="myForm">
+<label for="username">Username</label>
+       <input type="text" id="username" name="username" ng-model="formData.username" ng-minlength="5" ng-maxlength="16"  required />
+
+   <span ng-show="myForm.username.$error.required && myForm.username.$dirty">required</span>
+
+  <span ng-show="!myForm.username.$error.required && (myForm.username.$error.minlength || myForm.username.$error.maxlength)">Username must be between 5 and 20 characters.
+  </span>
+<br> <br>
+ <label for="password">Password</label>  
+
+       <input type="password" id="password" name="password" ng-model="formData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}/" required  />
+
+   <span ng-show="myForm.password.$error.required && myForm.password.$dirty">required</span>
+
+   <span ng-show="!myForm.password.$error.required && (myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty">Passwords must be between 8 and 20 characters.</span>
+
+   <span ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
+   <br> <br>
+ 
+ <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+ </form>
+ </div>
+ </div>
+ </div>
+</body>
+</html>
